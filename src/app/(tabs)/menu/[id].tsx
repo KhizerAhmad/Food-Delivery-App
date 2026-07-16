@@ -1,8 +1,9 @@
 import { useLocalSearchParams } from 'expo-router'
 import {Text} from 'react-native'
 
-const {id} = useLocalSearchParams();
+
 const ProductDetails = () => {
+    const {id} = useLocalSearchParams();
   return (
     <Text>Product is : {id}</Text>
   )
