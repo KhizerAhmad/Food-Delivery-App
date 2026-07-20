@@ -10,6 +10,7 @@ export default function TabsLayout() {
       <Tabs.Screen name="menuPizza" options={{title:"Orders", tabBarIcon:({color})=>(
         <FontAwesome name="list" size={20} color={color} />)}}
         />
+        <Tabs.Screen name="index" options={{href:null}}/>
     </Tabs>
   );
 };
