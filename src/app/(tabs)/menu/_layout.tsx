@@ -1,38 +1,42 @@
-import {Stack, useRouter } from "expo-router";
+import { FontAwesome } from "@expo/vector-icons";
+import { Link, Stack } from "expo-router";
 import { Pressable } from "react-native";
 
-export default function RootLayout() {
-    const router=useRouter();
+export default function MenuLayout() {
   return (
-    <Stack >
-        <Stack.Screen name="index" options={{title:"Menu", headerBackground: () => (
-            <Pressable 
-              onPress={() => router.push("/menu/index")} 
-              style={{ 
-                height: 90, 
-                backgroundColor: "#ffffff" 
-              }} 
-            />
-          ),
+    <Stack
+      screenOptions={{
+        headerShadowVisible: true,
+        headerStyle: {
+          backgroundColor: "#ffffff", 
+        },
+        headerTitleAlign: "center",
+        headerRight: () => (
+          <Link href={"/cart"} asChild>
+            <Pressable style={{ paddingHorizontal: 10 }}>
+              {({ pressed }) => (
+                <FontAwesome 
+                  name="shopping-cart" 
+                  size={20} 
+                  color="#3b82f6"
+                  style={{opacity: pressed ? 0.5 : 1 }}
+                />
+              )}
+            </Pressable>
+          </Link>
+        ),
+      }}
+    >
+      <Stack.Screen
+        name="index"
+        options={{
+          title: "Menu",
           headerTitleStyle: {
-            fontSize: 26, 
-            fontWeight: "bold"
-          }}}/>
-        <Stack.Screen name="[id]" options={{title:"Details", headerBackground:()=>(
-            <Pressable 
-              onPress={() => router.push("/menu/[id]")} 
-              style={{ 
-                height: 90, 
-                backgroundColor: "#ffffff" 
-              }} 
-            />
-          ),
-          headerTitleStyle: {
-            fontSize: 26, 
-            fontWeight: "bold"
-          }
-        }}/>
+            fontSize: 26,
+            fontWeight: "bold",
+          },
+        }}
+      />
     </Stack>
   );
-};
-
+}
