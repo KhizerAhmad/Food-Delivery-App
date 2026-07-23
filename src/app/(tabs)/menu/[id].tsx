@@ -6,17 +6,22 @@ import { PizzaSize } from '@/types';
 import { useState } from 'react';
 import Button from '@/app/components/Button';
 import { Ionicons } from "@expo/vector-icons";
+import { useCart } from '@/app/providers/CartProvider';
 
 const defaultImage = 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/default.png'
 const sizes:PizzaSize[]=["S","M","L","XL"]
 
 const ProductDetails = () => {
     const {id} = useLocalSearchParams();
+    const {addItem}=useCart();
     const product=products.find((p)=>String(p.id)===id)
     const router=useRouter();
-    const [selectedSize,setselectedSize]=useState<String>("M")
+    const [selectedSize,setselectedSize]=useState<PizzaSize>("M")
     const addtoCart=()=>{
-      console.warn("Added to cart",selectedSize)
+      if (!product) return;
+      addItem(product,selectedSize)
+      console.warn(`Item added to cart ${product.name}`,selectedSize)
+      router.push("/cart")
     }
   return (
     <View style={styles.container}>

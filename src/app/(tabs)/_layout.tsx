@@ -3,7 +3,7 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 export default function TabsLayout() {
   return (
-    <Tabs>
+    <Tabs screenOptions={{tabBarStyle:{borderRadius:30}}}>
       <Tabs.Screen name="menu" options={{title:"Menu", tabBarIcon: ({ color }) => (
         <FontAwesome name="cutlery" size={20} color={color} />), headerShown:false}}
         />
