@@ -13,7 +13,9 @@ const Cart = () => {
           <Text style={{marginTop:20,fontSize:20,fontWeight:"500"}}>Total: ${total}</Text>
           <Button text="Checkout" />
         </View>
-      ) : null}
+      ) : (
+        <Text style={{fontSize:25,fontWeight:"500"}}>Cart is Empty</Text>
+      )}
     </View>
   )
 }

@@ -13,7 +13,7 @@ const ProductListItem = ({ product }: ProductListItemProps) => {
             <Pressable style={styles.container}>
                 <Image source={{ uri: product.image ?? defaultImage }} style={styles.img} resizeMode='contain' />
                 <Text style={styles.name}>{product.name} </Text>
-                <Text style={styles.price}>{product.price}</Text>
+                <Text style={styles.price}>$ {product.price}</Text>
             </Pressable>
         </Link>
     )
