@@ -12,7 +12,6 @@ type initialCreate = {
 
 const sign_in = () => {
   const { role } = useLocalSearchParams();
-  console.log(role)
   const router = useRouter();
   
   const initialValue: initialCreate = {
@@ -65,7 +64,7 @@ const sign_in = () => {
             )}
 
             <Button text={"Sign in"} onPress={handleSubmit as any}/>
-            <Text onPress={()=>router.push("/sign_up")} style={styles.textButton}>Create an Account</Text>
+            <Text onPress={()=>router.push(`/sign_up?role=${role}`)} style={styles.textButton}>Create an Account</Text>
           </View>
         );
       }}
